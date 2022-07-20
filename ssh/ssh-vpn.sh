@@ -49,10 +49,10 @@ ver=$VERSION_ID
 country=ID
 state=Indonesia
 locality=Indonesia
-organization=fromhell
-organizationalunit=fromhell
-commonname=fromhell
-email=fromhellstore@gmail.com
+organization=fromhell26
+organizationalunit=fromhell26
+commonname=fromhell26
+email=fromhell26store@gmail.com
 
 # simple password minimal
 wget -O /etc/pam.d/common-password "https://${fromhell26}/password"
