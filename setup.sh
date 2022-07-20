@@ -158,7 +158,7 @@ echo "   - Full Orders For Various Services" | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "   - Dev/Main                : Horas Marolop Amsal Siregar"  | tee -a log-install.txt
+echo "   - Dev/Main                : ENVY TEAM PROJECTS"  | tee -a log-install.txt
 echo "   - Recode                  : fromhell26" | tee -a log-install.txt
 echo "   - Telegram                : T.me/fromhell26"  | tee -a log-install.txt
 echo "   - Instagram               : ~"  | tee -a log-install.txt
