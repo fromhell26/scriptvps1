@@ -37,6 +37,9 @@ fromhell26nn="raw.githubusercontent.com/fromhell26/scriptvps/main/trojango"
 # Link Hosting Kalian Untuk Stunnel5
 fromhell26nnn="raw.githubusercontent.com/fromhell26/scriptvps/main/stunnel5"
 
+# Link Hosting Kalian Untuk menu
+fromhell26nnnn="raw.githubusercontent.com/fromhell26/scriptvps/main/menu"
+
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip);
@@ -458,6 +461,20 @@ wget -O addtrgo "https://${fromhell26nn}/addtrgo.sh"
 wget -O deltrgo "https://${fromhell26nn}/deltrgo.sh"
 wget -O renewtrgo "https://${fromhell26nn}/renewtrgo.sh"
 wget -O cektrgo "https://${fromhell26nn}/cektrgo.sh"
+wget -O menu-backup "https://${fromhell26nnnn}/menu-backup.sh"
+wget -O menu-domain "https://${fromhell26nnnn}/menu-domain.sh"
+wget -O menu-l2tp "https://${fromhell26nnnn}/menu-l2tp.sh"
+wget -O menu-pptp "https://${fromhell26nnnn}/menu-pptp.sh"
+wget -O menu-shadowsocks "https://${fromhell26nnnn}/menu-shadowsocks.sh"
+wget -O menu-ssh "https://${fromhell26nnnn}/menu-ssh.sh"
+wget -O menu-sstp "https://${fromhell26nnnn}/menu-sstp.sh"
+wget -O menu-tools "https://${fromhell26nnnn}/menu-tools.sh"
+wget -O menu-trial "https://${fromhell26nnnn}/menu-trial.sh"
+wget -O menu-trojan "https://${fromhell26nnnn}/menu-trojan.sh"
+wget -O menu-v2ray "https://${fromhell26nnnn}/menu-v2ray.sh"
+wget -O menu-vpn "https://${fromhell26nnnn}/menu-vpn.sh"
+wget -O menu-wireguard "https://${fromhell26nnnn}/menu-wireguard.sh"
+wget -O menu "https://${fromhell26nnnn}/menu.sh"
 chmod +x addhost
 chmod +x menu
 chmod +x addssh
@@ -505,6 +522,20 @@ chmod +x deltrgo
 chmod +x renewtrgo
 chmod +x cektrgo
 chmod +x running
+chmod +x menu-backup
+chmod +x menu-domain
+chmod +x menu-l2tp
+chmod +x menu-pptp
+chmod +x menu-shadowsocks
+chmod +x menu-ssh
+chmod +x menu-sstp
+chmod +x menu-tools
+chmod +x menu-trial
+chmod +x menu-trojan
+chmod +x menu-v2ray
+chmod +x menu-vpn
+chmod +x menu-wireguard
+chmod +x menu
 echo "0 5 * * * root clearlog && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 # remove unnecessary files
