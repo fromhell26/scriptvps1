@@ -14,19 +14,10 @@ color3='\e[0m'
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
-IZIN=$( curl https://raw.githubusercontent.com/fromhell26/perizinan/main/ip | grep $MYIP )
-if [ $MYIP = $IZIN ]; then
-echo -e "${NC}${GREEN}Permission Accepted...${NC}"
-else
-echo -e "${NC}${RED}Permission Denied!${NC}";
-echo -e "${NC}${LIGHT}Please Contact Admin!!"
-echo -e "${NC}${LIGHT}Telegram : https://t.me/fromhell26"
-exit 0
-fi
 clear 
 echo -e ""
 echo -e ""
-toilet --gay -f slant -t " ENVY PROJECTS"
+toilet --gay -f slant -t " Geo Project"
 #cat /usr/bin/bannerku | lolcat
 ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
 IPVPS=$(curl -s ipinfo.io/ip )
@@ -70,12 +61,12 @@ echo -e " $bl ║ \e[36;1m• ISP Name          :\e[0m$bd $ISP"
  echo -e  " $bl ║${color1} 6${color3}.$bd Backup Section (${color2}menu-backup${color3})                       $mg   ║"
  echo -e  " $mg ║${color1} 7${color3}.$bd Trial Account Section (${color2}menu-trial${color3})          $mg          ║"
  echo -e  " $mg ║${color1} 8${color3}.$bd System Tools Section (${color2}menu-tools${color3})                  $mg   ║"
- echo -e  " $mg ║${color1} 9${color3}.$bd Update Script Section $gl Version $op($bl 3.0.1 $op)           $mg   ║"
+ #echo -e  " $mg ║${color1} 9${color3}.$bd Update Script Section $gl Version $op($bl 3.0.1 $op)           $mg   ║"
  echo -e  "  \e[1;32m╠══════════════════════════════════════════════════════════╣" | lolcat
  echo -e  " $bl ║${color1} x${color3}.$bd  Exit Main Menu   (${color2}exit${color3})                           $mg   ║" 
  echo -e  "  \e[1;32m╚══════════════════════════════════════════════════════════╝" | lolcat
  echo -e  ""
- read -p "  Please Enter The Number [1-9 or x] :  " menu
+ read -p "  Please Enter The Number [1-8 or x] :  " menu
 echo -e   ""
 echo -e   ""
 echo -e   ""
@@ -111,7 +102,7 @@ x)
 exit
 ;;
 *)
-echo "Masukkan Nomor Yang Ada Sayang!"
+echo "ENVY PROJECTS"
 menu
 ;;
 esac
