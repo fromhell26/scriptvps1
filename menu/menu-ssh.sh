@@ -10,6 +10,7 @@ color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
 clear
+toilet --gay -f slant -t " ENVY PROJECT"
 echo -e""
 echo -e "${color1}1${color3}.$bd Create SSH & OpenVPN Account (${color2}addssh${color3})"
 echo -e "${color1}2${color3}.$bd Trial Account SSH & OpenVPN (${color2}trialssh${color3})"
