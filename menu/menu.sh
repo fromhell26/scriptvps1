@@ -17,7 +17,7 @@ echo "Checking VPS"
 clear 
 echo -e ""
 echo -e ""
-toilet --gay -f slant -t " Geo Project"
+toilet --gay -f slant -t " ENVY PROJECT"
 #cat /usr/bin/bannerku | lolcat
 ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
 IPVPS=$(curl -s ipinfo.io/ip )
