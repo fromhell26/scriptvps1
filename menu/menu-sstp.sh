@@ -10,7 +10,6 @@ color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
 clear
-cat /usr/bin/bannerSSTP | lolcat
 echo -e""
 echo -e "${color1}1${color3}.$bd Create Account SSTP (${color2}addsstp${color3})"
 echo -e "${color1}2${color3}.$bd Delete SSTP Account (${color2}delsstp${color3})"
