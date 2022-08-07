@@ -10,7 +10,7 @@ color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 clear
 echo -e ""
-cat /usr/bin/bannerDOMAIN | lolcat
+toilet --gay -f slant -t " ENVY PROJECT"
 echo -e ""
 echo -e "${color1}1${color3}.$bd Add Subdomain Host For VPS (${color2}add-host${color3})"
 echo -e "${color1}2${color3}.$bd Add ID Cloudflare (${color2}id-cloudflare${color3})"
