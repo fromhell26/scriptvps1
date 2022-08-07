@@ -10,7 +10,7 @@ color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
 clear
-cat /usr/bin/bannerSYSTEM | lolcat
+toilet --gay -f slant -t " ENVY PROJECT"
 echo -e""
 echo -e "${color1} 1${color3}.$bd Change Port All Account (${color2}changeport${color3})"
 echo -e "${color1} 2${color3}.$bd Webmin Menu (${color2}wbmn${color3})"
