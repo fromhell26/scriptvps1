@@ -10,7 +10,7 @@ color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
 clear
-cat /usr/bin/bannerTROJAN | lolcat
+toilet --gay -f slant -t " ENVY PROJECT"
 echo -e""
 echo -e "${color1}1${color3}.$bd Create Trojan Account (${color2}addtrojan${color3})"
 echo -e "${color1}2${color3}.$bd Deleting Trojan Account (${color2}deltrojan${color3})"
