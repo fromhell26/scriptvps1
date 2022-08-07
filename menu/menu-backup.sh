@@ -10,7 +10,7 @@ color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
 clear
-cat /usr/bin/bannerBACKUP | lolcat
+toilet --gay -f slant -t " ENVY PROJECT"
 echo -e""
 echo -e "${color1}1${color3}.$bd Autobackup Data VPS (${color2}autobackup${color3})"
 echo -e "${color1}2${color3}.$bd Backup Manual Data VPS (${color2}backup${color3})"
