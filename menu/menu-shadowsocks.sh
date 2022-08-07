@@ -10,7 +10,7 @@ color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
 clear
-cat /usr/bin/bannerSHADOWSOCK | lolcat
+toilet --gay -f slant -t " ENVY PROJECT"
 echo -e""
 echo -e "${color1}1${color3}.$bd  Create SSR Account (${color2}addssr${color3})"
 echo -e "${color1}2${color3}.$bd  Create Shadowsocks Account (${color2}addss${color3})"
