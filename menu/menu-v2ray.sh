@@ -10,7 +10,7 @@ color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
 clear
-cat /usr/bin/bannerV2RAY | lolcat
+toilet --gay -f slant -t " ENVY PROJECT"
 echo -e""
 echo -e "${color1}1${color3}.$bd Create Vmess Websocket Account (${color2}addv2ray${color3})"
 echo -e "${color1}2${color3}.$bd Delete Vmess Websocket Account (${color2}delv2ray${color3})"
