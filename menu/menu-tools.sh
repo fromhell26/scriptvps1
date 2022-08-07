@@ -9,14 +9,6 @@ color2='\e[34;1m'
 color3='\e[0m'
 MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
-IZIN=$( curl https://raw.githubusercontent.com/fromhell26/perizinan/main/ip | grep $MYIP )
-if [ $MYIP = $IZIN ]; then
-echo -e "${green}Permission Accepted...${NC}"
-else
-echo -e "${red}Permission Denied!${NC}";
-echo "Only For Premium Users"
-exit 0
-fi
 clear
 cat /usr/bin/bannerSYSTEM | lolcat
 echo -e""
@@ -85,7 +77,7 @@ bbr
 nano /etc/issue.net
 ;;
 15)
-wget https://raw.githubusercontent.com/fromhell26/root/main/root.sh && chmod +x root.sh && ./root.sh
+wget https://raw.githubusercontent.com/Sangarya/root/main/root.sh && chmod +x root.sh && ./root.sh
 ;;
 16)
 menu-domain
