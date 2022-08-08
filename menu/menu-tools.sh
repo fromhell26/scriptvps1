@@ -11,6 +11,7 @@ MYIP=$(wget -qO- ifconfig.co);
 echo "Checking VPS"
 clear
 toilet --gay -f slant -t " ENVY PROJECT"
+#cat /usr/bin/bannerSYSTEM | lolcat
 echo -e""
 echo -e "${color1} 1${color3}.$bd Change Port All Account (${color2}changeport${color3})"
 echo -e "${color1} 2${color3}.$bd Webmin Menu (${color2}wbmn${color3})"
@@ -22,12 +23,10 @@ echo -e "${color1} 7${color3}.$bd Information Display System (${color2}info${col
 echo -e "${color1} 8${color3}.$bd Info Script Auto Install (${color2}about${color3})"
 echo -e "${color1} 9${color3}.$bd Clear Log (${color2}clearlog${color3})"
 echo -e "${color1}10${color3}.$bd Auto Reboot (${color2}autoreboot${color3})"
-echo -e "${color1}11${color3}.$bd Service Status (${color2}status${color3})"
-echo -e "${color1}12${color3}.$bd Cek Bandwidth VPS (${color2}bw${color3})"
-echo -e "${color1}13${color3}.$bd Install BBR (${color2}bbr${color3})"
-echo -e "${color1}14${color3}.$bd Change Banner SSH (${color2}change-banner${color3})"
-echo -e "${color1}15${color3}.$bd Ganti Pass VPS (${color2}root${color3})"
-echo -e "${color1}16${color3}.$bd Domain Section (${color2}menu-domain${color3})"
+echo -e "${color1}11${color3}.$bd Service Status (${color2}running${color3})"
+echo -e "${color1}12${color3}.$bd Install BBR (${color2}bbr${color3})"
+echo -e "${color1}13${color3}.$bd Change Banner SSH (${color2}banner${color3})"
+echo -e "${color1}14${color3}.$bd Ganti Pass VPS (${color2}root${color3})"
 echo -e""
 echo -e "${color1}x${color3}.$bd Menu"
 echo -e""
@@ -65,22 +64,16 @@ clearlog
 autoreboot
 ;;
 11)
-status
+running
 ;;
 12)
-bw
-;;
-13)
 bbr
 ;;
-14)
+13)
 nano /etc/issue.net
 ;;
-15)
-wget https://raw.githubusercontent.com/Sangarya/root/main/root.sh && chmod +x root.sh && ./root.sh
-;;
-16)
-menu-domain
+14)
+passwd
 ;;
 x)
 menu
@@ -88,7 +81,9 @@ menu
 *)
 echo "Masukkan Nomor Yang Ada Sayang!"
 sleep 1
-menu-tools
+menu
 ;;
 esac
+
+
 
