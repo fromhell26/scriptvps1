@@ -1,24 +1,71 @@
 #!/bin/bash
-CYAN='\e[1;36m'
-GREEN='\033[0;32m'
-color1='\e[031;1m'
-color2='\e[34;1m'
-color3='\e[0m'
 MYIP=$(curl -sS ipv4.icanhazip.com)
 #########################
-clear
-# GETTING INFORMATION
+IZIN=$(curl -sS https://raw.githubusercontent.com/fromhell26/perizinan/main/main/allow | awk '{print $4}' | grep $MYIP)
+if [ $MYIP = $IZIN ]; then
+echo -e "\e[32mPermission Accepted...\e[0m"
+else
+echo -e "\e[31mPermission Denied!\e[0m";
+echo -e "\e[31mDaftar IP dalam github lok sayang okay? mun dah daftar tapi masih juak permission denied refresh dolok website ya hehe. Love you #\e[0m"
+exit 0
+fi
+#EXPIRED
+expired=$(curl -sS https://raw.githubusercontent.com/fromhell26/perizinan/main/main/allow | grep $MYIP | awk '{print $3}')
+echo $expired > /root/expired.txt
+today=$(date -d +1day +%Y-%m-%d)
+while read expired
+do
+	exp=$(echo $expired | curl -sS https://raw.githubusercontent.com/fromhell26/perizinan/main/main/allow | grep $MYIP | awk '{print $3}')
+	if [[ $exp < $today ]]; then
+		Exp2="\033[1;31mExpired\033[0m"
+        else
+        Exp2=$(curl -sS https://raw.githubusercontent.com/fromhell26/perizinan/main/main/allow | grep $MYIP | awk '{print $3}')
+	fi
+done < /root/expired.txt
+rm /root/expired.txt
+Name=$(curl -sS https://raw.githubusercontent.com/fromhell26/perizinan/main/main/allow | grep $MYIP | awk '{print $2}')
+# GETTING OS INFORMATION
+source /etc/os-release
+Versi_OS=$VERSION
+ver=$VERSION_ID
+Tipe=$NAME
+URL_SUPPORT=$HOME_URL
+basedong=$ID
+
+# VPS ISP INFORMATION
+#ITAM='\033[0;30m'
+echo -e "$ITAM"
+#REGION=$( curl -s ipinfo.io/region )
+#clear
+#COUNTRY=$( curl -s ipinfo.io/country )
+#clear
+#WAKTU=$( curl -s ipinfo.ip/timezone )
+#clear
+CITY=$( curl -s ipinfo.io/city )
+#clear
+#REGION=$( curl -s ipinfo.io/region )
+#clear
+
+# CHEK STATUS 
 l2tp_status=$(systemctl status xl2tpd | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 openvpn_service="$(systemctl show openvpn.service --no-page)"
 oovpn=$(echo "${openvpn_service}" | grep 'ActiveState=' | cut -f2 -d=)
+#status_openvp=$(/etc/init.d/openvpn status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+#status_ss_tls="$(systemctl show shadowsocks-libev-server@tls.service --no-page)"
+#ss_tls=$(echo "${status_ss_tls}" | grep 'ActiveState=' | cut -f2 -d=)
 sst_status=$(systemctl status shadowsocks-libev-server@tls | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1) 
 ssh_status=$(systemctl status shadowsocks-libev-server@http | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1) 
-tls_v2ray_status=$(systemctl status xray@v2ray-tls | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-nontls_v2ray_status=$(systemctl status xray@v2ray-nontls | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-vless_tls_v2ray_status=$(systemctl status xray@vless-tls | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-vless_nontls_v2ray_status=$(systemctl status xray@vless-nontls | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+#status_ss_http="$(systemctl show shadowsocks-libev-server@http.service --no-page)"
+#ss_http=$(echo "${status_ss_http}" | grep 'ActiveState=' | cut -f2 -d=)
+#sssohtt=$(systemctl status shadowsocks-libev-server@*-http | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+#status="$(systemctl show shadowsocks-libev.service --no-page)"
+#status_text=$(echo "${status}" | grep 'ActiveState=' | cut -f2 -d=)
+tls_v2ray_status=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+nontls_v2ray_status=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+vless_tls_v2ray_status=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+vless_nontls_v2ray_status=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 ssr_status=$(systemctl status ssrmu | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-trojan_server=$(systemctl status xray@trojan | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+trojan_server=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 dropbear_status=$(/etc/init.d/dropbear status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 stunnel_service=$(/etc/init.d/stunnel5 status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 sstp_service=$(systemctl status accel-ppp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
@@ -35,12 +82,11 @@ sswg=$(systemctl status wg-quick@wg0 | grep Active | awk '{print $3}' | cut -d "
 wstls=$(systemctl status ws-tls | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 wsdrop=$(systemctl status ws-nontls | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 wsovpn=$(systemctl status ws-ovpn | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+#wsopen=$(systemctl status ws-openssh | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 osslh=$(systemctl status sslh | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 ohp=$(systemctl status dropbear-ohp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 ohq=$(systemctl status openvpn-ohp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 ohr=$(systemctl status ssh-ohp | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#grpc=$(systemctl status geo-vmess-grpc | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-#vgrpc=$(systemctl status geo-vless-grpc | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 
 # COLOR VALIDATION
 RED='\033[0;31m'
@@ -256,42 +302,60 @@ else
    swsopen="${RED}  Not Running ${NC}  ( Error )${NC}"
 fi
 
-# STATUS SERVICE GRPC VMESS
-if [[ $grpc == "running" ]]; then 
-   sgrpc=" ${GREEN}Running ${NC}( No Error )${NC}" 
-else
-   sgrpc="${RED}  Not Running ${NC}  ( Error )${NC}"
-fi
-
-# STATUS SERVICE GRPC VMESS
-if [[ $vgrpc == "running" ]]; then 
-   svgrpc=" ${GREEN}Running ${NC}( No Error )${NC}" 
-else
-   svgrpc="${RED}  Not Running ${NC}  ( Error )${NC}"
-fi
-
 # TOTAL RAM
 total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
 totalram=$(($total_ram/1024))
+
+# TIPE PROCESSOR
+#totalcore="$(grep -c "^processor" /proc/cpuinfo)" 
+#totalcore+=" Core"
+#corediilik="$(grep -c "^processor" /proc/cpuinfo)" 
+#tipeprosesor="$(awk -F ': | @' '/model name|Processor|^cpu model|chip type|^cpu type/ {
+  #                      printf $2;
+      #                  exit
+    #                    }' /proc/cpuinfo)"
+
+# GETTING CPU INFORMATION
+#cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
+#cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
+#cpu_usage+=" %"
+
+# OS UPTIME
+#uptime="$(uptime -p | cut -d " " -f 2-10)"
+
 # KERNEL TERBARU
-#kernelku=$(uname -r)
+kernelku=$(uname -r)
+
+# WAKTU SEKARANG 
+#harini=`date -d "0 days" +"%d-%m-%Y"`
+#jam=`date -d "0 days" +"%X"`
+
+# DNS PATCH
+#tipeos2=$(uname -m)
+
+# GETTING DOMAIN NAME
 Domen="$(cat /etc/xray/domain)"
 echo -e ""
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[41;1;39m              ⇱ Sytem Information ⇲             \E[0m"
+echo -e "\E[44;1;39m              ⇱ System Information ⇲             \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "❇️ Hostname    : $HOSTNAME"
+echo -e "❇️ OS Name     : $Tipe"
+#echo -e "Processor   : $tipeprosesor"
+#echo -e "Proc Core   :$totalcore"
+#echo -e "Virtual     :$typevps"
+#echo -e "Cpu Usage   :$cpu_usage"
 echo -e "❇️ Total RAM   : ${totalram}MB"
 echo -e "❇️ Public IP   : $MYIP"
 echo -e "❇️ Domain      : $Domen"
-#echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-#echo -e "\E[41;1;39m          ⇱ Subscription Information ⇲          \E[0m"
-#echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-#echo -e "❇️ Client Name : $Name"
-#echo -e "❇️ Exp Script  : $geo"
-#echo -e "❇️ Version     :\033[1;36m $(cat /opt/.ver)\e[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[41;1;39m            ⇱ Service Information ⇲             \E[0m"
+echo -e "\E[44;1;39m          ⇱ Subscription Information ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "❇️ Client Name : $Name"
+echo -e "❇️ Exp Script  : $Exp2"
+echo -e "❇️ Version     : Latest Version"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m            ⇱ Service Information ⇲             \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "❇️ SSH / TUN               :$status_ssh"
 echo -e "❇️ OpenVPN                 :$status_openvpn"
@@ -307,11 +371,9 @@ echo -e "❇️ XRAYS Vmess TLS         :$status_tls_v2ray"
 echo -e "❇️ XRAYS Vmess None TLS    :$status_nontls_v2ray"
 echo -e "❇️ XRAYS Vless TLS         :$status_tls_vless"
 echo -e "❇️ XRAYS Vless None TLS    :$status_nontls_vless"
-#echo -e "❇️ XRAYS Vmess GRPC        :$sgrpc"
-#echo -e "❇️ XRAYS Vless GRPC        :$svgrpc"
-echo -e "❇️ Shadowsocks-R           :$status_ssr"
-#echo -e "❇️ Shadowsocks-OBFS HTTPS  :$status_sst"
-echo -e "❇️ Shadowsocks-OBFS        :$status_ssh"
+echo -e "❇️ Shadowsocks-R           :$status_ssh"
+echo -e "❇️ Shadowsocks-OBFS HTTPS  :$status_ssh"
+echo -e "❇️ Shadowsocks-OBFS HTTP   :$status_ssh"
 echo -e "❇️ XRAYS Trojan            :$status_virus_trojan"
 echo -e "❇️ Trojan GO               :$status_trgo"
 echo -e "❇️ Wireguard               :$status_wg"
@@ -323,5 +385,4 @@ echo -e "❇️ OHP OpenVPN             :$sohq"
 echo -e "❇️ OHP SSH                 :$sohr"
 echo -e "❇️ SSL / SSH Multiplexer   :$sosslh"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[41;1;39m               ⇱ GEOVPN PROJECT ⇲               \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo ""
